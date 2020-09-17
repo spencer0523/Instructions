@@ -100,7 +100,10 @@ private extension CoachMarkBodyDefaultView {
     func makeHintTextView() -> UITextView {
         let textView = UITextView().preparedForAutoLayout()
 
+        #if targetEnvironment(macCatalyst)
+        #else
         textView.layoutManager.hyphenationFactor = 1.0
+        #endif
         textView.textAlignment = .justified
         textView.textColor = InstructionsColor.coachMarkLabel
         textView.font = UIFont.systemFont(ofSize: 15.0)
